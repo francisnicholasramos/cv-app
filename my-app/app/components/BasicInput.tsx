@@ -11,7 +11,7 @@ const BasicInput = ({ id, type, labelText,// onChange, value
     return (
         <div>
             <Input
-                className="input"
+                className="mt-[10px]" 
                 id={id}
                 type={type}
                 label={labelText}
