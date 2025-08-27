@@ -7,6 +7,7 @@ import Accordion from "./components/Accordion";
 import ExperienceForm from "./components/experience/ExperienceForm";
 import data from "../src/data"
 
+// THIS ONE SHOULD NOT BE AVAILABLE ON OTHER BRANCHES
 
 function App() {
   const [loadData, setLoadData] = useState(data.personalDetails);
