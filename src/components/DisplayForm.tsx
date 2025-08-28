@@ -1,18 +1,22 @@
 import ExpandForm from "./ExpandForm"
-import type {Experience} from "../../src/data";
+import type {ExperienceFormProps} from "../components/experience/ExperienceForm";
 
 interface FormData {
   id: string;
-  [key: string]: string; 
+  [key: string]: string;
+  company: string;
+  position: string;
+  location: string;
 }
 
 interface DisplayFormProps {
   forms: FormData[];
   titleKey: string;
   arrayName: string;
+  onCancel: (e: React.MouseEventHandler) => void;
   toggleCollapsed: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;  
-  // FormComponent: 
+  FormComponent: ExperienceFormProps 
 }
 
 const DisplayForm: React.FC<DisplayFormProps> = ({
@@ -41,8 +45,9 @@ const DisplayForm: React.FC<DisplayFormProps> = ({
           <FormComponent 
             key={form.id}
             form={form}
+            onChange={onChange}
             cancel={onCancel}
-            save={toggleCollapsed}
+            done={toggleCollapsed}
           />
         ) 
       )}

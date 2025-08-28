@@ -11,6 +11,7 @@ interface AddExperienceProps {
   setOpen: (sectionName: string) => void;
   experiences: Experience;
   toggleCollapsed: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onCancel: (e: React.MouseEventHandler) => void;
 }
 
 const AddExperience: React.FC<AddExperienceProps> = ({
@@ -19,7 +20,7 @@ const AddExperience: React.FC<AddExperienceProps> = ({
   setOpen, 
   experiences,
   // onChange,
-  // onCancel,
+  onCancel,
   toggleCollapsed,
   // onHide,
   // onRemove
@@ -47,6 +48,7 @@ const AddExperience: React.FC<AddExperienceProps> = ({
             FormComponent={ExperienceForm}
             titleKey="company"
             arrayName="experiences"
+            onCancel={onCancel}
           />
 
 

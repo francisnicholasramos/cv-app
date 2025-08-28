@@ -1,31 +1,44 @@
 import InputGroup from "../InputGroup";
-import Button from "../Button";
 import GroupButton from "../GroupButton";
-import type {Experience} from "../../../src/data"
 
-interface ExpForm {
-  form: Experience;  
+type ExperienceFormData = {
+  id: string;
+  company: string;
+  position: string;
+  location: string;
 }
 
-const ExperienceForm: React.FC<ExpForm> = ({form}) => {
+type ExperienceFormProps = {
+  form: ExperienceFormData;
+  cancel: () => void;
+  done: () => void;
+  remove: () => void;
+  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;  
+};
 
-  const { cancel, done, remove } = form;
+
+const ExperienceForm: React.FC<ExperienceFormProps> = (props) => {
+  const { id, company, position, location } = props.form;
+  const { onChange, cancel, done, remove } = props;
   return (
-      <div className='bg-white p-2'>
+      <div id={id} data-array-name="experiences" className='section-form bg-white p-2'>
         <InputGroup 
-          value={form.company}
+          value={company}
+          onChange={onChange}
           id="company"
           label="Company Name"
           placeholder="Enter the company name"
         />
         <InputGroup 
-          value={form.position}
+          value={position}
+          onChange={onChange}
           id="position"
           label="Position/Role"
           placeholder="Enter the position/role"
         />
         <InputGroup 
-          value={form.location}
+          value={location}
+          onChange={onChange}
           id="location"
           label="Location"
           placeholder="Enter location"
@@ -33,13 +46,14 @@ const ExperienceForm: React.FC<ExpForm> = ({form}) => {
         />
         <InputGroup 
           id="desc"
+          onChange={onChange}
           type="textarea"
           label="Description"
           placeholder="Description"
           optional
         />
 
-        <GroupButton done={done} cancel={cancel} del={remove}/>
+        <GroupButton done={done} cancel={cancel} remove={remove}/>
 
       </div>
   )

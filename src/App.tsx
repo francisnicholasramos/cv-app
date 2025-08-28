@@ -38,6 +38,22 @@ function App() {
     });
   } 
 
+  function handleSectionChange(e) {
+    const { key } = e.target.dataset;
+    const inputValue = e.target.value;
+    const form = e.target.closest(".section-form");
+    const { id } = form;
+    const { arrayName } = form.dataset;
+    const section = sections[arrayName];
+    setSections({
+      ...sections,
+      [arrayName]: section.map((obj) => {
+        if (obj.id === id) obj[key] = inputValue;
+        return obj;
+      }),
+    });
+  }
+
   function removeForm(e) {
     const form = e.target.closest(".section-form");
     const { arrayName } = form.dataset;
@@ -88,7 +104,6 @@ function App() {
           github={loadData.github}
         />
 
-
         <br/>
 
         <AddExperience 
@@ -97,6 +112,7 @@ function App() {
           experiences={sections.experiences}
           onCancel={cancelForm}
           toggleCollapsed={toggleCollapsed}
+          onChange={handleSectionChange}
         />
 
         <br/>
