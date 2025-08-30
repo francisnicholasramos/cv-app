@@ -1,29 +1,24 @@
-import { FaChevronUp, FaChevronDown } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
 
-interface AccordionProps {
-  isOpen: boolean;
-  setOpen: (name: string) => void;
-  sectionName: string;
-  icon: React.ReactNode;
-}
-
-const Accordion: React.FC<AccordionProps> = ({isOpen, setOpen, sectionName, icon}) => {
+const Accordion = ({
+  sectionName,
+  setOpen,
+  icon,
+  isCollapsed
+}) => {
   return (
-    <button
-      className={`w-full rounded-md bg-white p-3 cursor-pointer ${isOpen ? 'rounded-b-none' : 'rounded-b-md'}`}
-      onClick={() => setOpen(isOpen ? "" : sectionName)}    
-    >
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
+    <button onClick={() => setOpen(isCollapsed ? "" : sectionName)} className={`w-full bg-white px-3 py-2 cursor-pointer rounded-md`}>
+       <div className="flex justify-between items-center">
+          <div className="flex items-center gap-2">
             {icon} 
             {sectionName} 
           </div>
         <FaChevronDown
           className={`transform transition-transform duration-300 ${
-            isOpen ? "rotate-180" : "rotate-0"
+            isCollapsed ? "rotate-180" : "rotate-0"
           }`}
         />
-        </div>
+        </div>      
     </button>
   )
 }

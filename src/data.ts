@@ -1,4 +1,4 @@
-export interface PersonalDetails {
+export interface GeneralInformation {
   fullName: string;
   email: string;
   phoneNumber: string;
@@ -33,12 +33,12 @@ export interface Sections {
 }
 
 export interface Data {
-  personalDetails: PersonalDetails;
+  generalInformation: GeneralInformation;
   sections: Sections;
 }
 
 const data: Data = {
-  personalDetails: {
+  generalInformation: {
     fullName: 'Francis Nicholas Ramos',
     email: 'francis03@gmail.com',
     phoneNumber: "+63 123 456 789",
@@ -67,7 +67,7 @@ const data: Data = {
         startDate: 'Feb 2025',
         endDate: 'June 2025',
         location: 'One World Place, BGC Taguig City',
-        isHidden: false,
+        isHidden: true,
         isCollapsed: true
       },
       {

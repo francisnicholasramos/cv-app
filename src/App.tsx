@@ -1,21 +1,18 @@
-import { useState } from "react";
-import PersonalDetails from "./components/personal-details/PersonalDetails"
-import AddExperience from "./components/experience/AddExperience";
-import ExpandForm from "./components/ExpandForm";
-import DisplayForm from "./components/DisplayForm";
-import Accordion from "./components/Accordion";
-import ExperienceForm from "./components/experience/ExperienceForm";
-import data from "../src/data"
+import {useState} from 'react'
+import GeneralInfo from './components/personal/GeneralInfo'
+import AddExp from './components/experience/AddExp'
+import Accordion from './components/Accordion'
+import View from './components/View'
+import data from './data'
+import './index.css' 
 
-// THIS ONE SHOULD NOT BE AVAILABLE ON OTHER BRANCHES
-
-function App() {
-  const [loadData, setLoadData] = useState(data.personalDetails);
-  const [sections, setSections] = useState(data.sections);
-  const [sectionOpen, setSectionOpen] = useState<string | null>(null)
+const App = () => {
+  const [basicInfo, setBasicInfo] = useState(data.generalInformation)
+  const [sections, setSections] = useState(data.sections)
+  const [accordion, setAccordion] = useState<string | null>(null)
   const [prevState, setPrevState] = useState(null);
 
-  const setOpen = (sectionName: string) => setSectionOpen(sectionName);
+  const setOpen = (sectionName: string) => setAccordion(sectionName);
 
   function toggleValue(e, key) {
     const sectionForm = e.target.closest(".section-form");
@@ -38,76 +35,41 @@ function App() {
     });
   } 
 
-  function removeForm(e) {
-    const form = e.target.closest(".section-form");
-    const { arrayName } = form.dataset;
-    const section = sections[arrayName];
-    const { id } = form;
 
-    setSections({
-      ...sections,
-      [arrayName]: section.filter((item) => item.id !== id),
-    });
-  }
-
-  function cancelForm(e) {
-    // if no prevState found remove form
-    if (prevState == null) {
-      removeForm(e);
-      return;
-    }
-
-    const sectionForm = e.target.closest(".section-form");
-    const { id } = sectionForm;
-    const { arrayName } = sectionForm.dataset;
-    const section = sections[arrayName];
-
-    setSections({
-      ...sections,
-      [arrayName]: section.map((form) => {
-        if (form.id === id) {
-          // Revert back to previous state
-          form = prevState;
-          form.isCollapsed = true;
-        }
-
-        return form;
-      }),
-    });
-  }
-
-  const toggleCollapsed = (e: React.MouseEvent<HTMLButtonElement>) => toggleValue(e, "isCollapsed");
+ const toggleCollapsed = (e: React.MouseEvent<HTMLButtonElement>) => toggleValue(e, "isCollapsed");
 
   return (
-    <div className="flex justify-center"> 
-      <div>
-        <PersonalDetails
-          fullName={loadData.fullName}
-          email={loadData.email}
-          phoneNumber={loadData.phoneNumber}
-          github={loadData.github}
+    <div className="flex justify-center">
+      <div className="w-[500px] max-w-[500px] gap-y-2">
+        <GeneralInfo 
+          fullName={basicInfo.fullName}
+          email={basicInfo.email}
+          phone={basicInfo.phoneNumber}
+          github={basicInfo.github}
+          onChange={(e) => setBasicInfo({
+            ...basicInfo,
+            [e.target.name]: e.target.value
+          })}
         />
 
-
-        <br/>
-
-        <AddExperience 
+        <AddExp 
           setOpen={setOpen}
-          isOpen={sectionOpen === "Experience"}
+          isCollapsed={accordion === 'Experience'}
           experiences={sections.experiences}
-          onCancel={cancelForm}
-          toggleCollapsed={toggleCollapsed}
+          toggle={toggleCollapsed}
         />
-
-        <br/>
-        
       </div>
 
-      <div className="border w-[800px]">
-        test
+      <div className="border w-[700px] max-w-[700px]">
+        <View
+          fullName={basicInfo.fullName}
+          email={basicInfo.email}
+          phone={basicInfo.phoneNumber}
+          github={basicInfo.github}
+        />
       </div>
     </div>
   )
 }
 
-export default App
+export default App;
