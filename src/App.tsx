@@ -19,8 +19,6 @@ const App = () => {
     const { id } = sectionForm;
     const { arrayName } = sectionForm.dataset;
 
-    console.log("id:", id);
-    console.log("arrayName:", arrayName);
     const section = sections[arrayName];
     setSections({
       ...sections,
@@ -35,6 +33,12 @@ const App = () => {
     });
   } 
 
+  function editable(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    setBasicInfo({
+      ...basicInfo,
+      [e.target.name]: e.target.value
+    })
+  }
 
  const toggleCollapsed = (e: React.MouseEvent<HTMLButtonElement>) => toggleValue(e, "isCollapsed");
 
@@ -46,10 +50,7 @@ const App = () => {
           email={basicInfo.email}
           phone={basicInfo.phoneNumber}
           github={basicInfo.github}
-          onChange={(e) => setBasicInfo({
-            ...basicInfo,
-            [e.target.name]: e.target.value
-          })}
+          onChange={editable}
         />
 
         <AddExp 
