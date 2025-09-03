@@ -1,4 +1,4 @@
-import { FaChevronUp, FaChevronDown } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
 
 interface AccordionProps {
   isOpen: boolean;

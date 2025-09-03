@@ -14,8 +14,9 @@ interface DisplayFormProps {
   titleKey: string;
   arrayName: string;
   onCancel: (e: React.MouseEventHandler) => void;
+  onRemove: (e: React.MouseEventHandler) => void;
   toggleCollapsed: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;  
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;  
   FormComponent: ExperienceFormProps 
 }
 
@@ -25,6 +26,7 @@ const DisplayForm: React.FC<DisplayFormProps> = ({
   titleKey, 
   arrayName,
   onCancel,
+  onRemove,
   toggleCollapsed,
 
   FormComponent
@@ -48,6 +50,7 @@ const DisplayForm: React.FC<DisplayFormProps> = ({
             onChange={onChange}
             cancel={onCancel}
             done={toggleCollapsed}
+            remove={onRemove}
           />
         ) 
       )}

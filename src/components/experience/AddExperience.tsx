@@ -8,22 +8,25 @@ import { MdOutlineAddCircleOutline } from "react-icons/md"
 
 interface AddExperienceProps {
   isOpen: boolean;
+  createForm: (e: React.MouseEventHandler) => void;
   setOpen: (sectionName: string) => void;
   experiences: Experience;
   toggleCollapsed: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onCancel: (e: React.MouseEventHandler) => void;
+  onRemove: (e: React.MouseEventHandler) => void;
 }
 
 const AddExperience: React.FC<AddExperienceProps> = ({
   isOpen,
-  // createForm,
+  createForm,
   setOpen, 
   experiences,
-  // onChange,
+  onChange,
   onCancel,
   toggleCollapsed,
   // onHide,
-  // onRemove
+  onRemove
 }) => {
 
   return (
@@ -38,8 +41,8 @@ const AddExperience: React.FC<AddExperienceProps> = ({
         <div
           className={`flex flex-col transition-all duration-300 ease-in-out overflow-hidden ${
             isOpen 
-              ? 'max-h-screen opacity-100' 
-              : 'max-h-0 opacity-0'
+              ? 'max-h-screen' 
+              : 'max-h-0'
           }`}   
         >
           <DisplayForm 
@@ -49,6 +52,8 @@ const AddExperience: React.FC<AddExperienceProps> = ({
             titleKey="company"
             arrayName="experiences"
             onCancel={onCancel}
+            onChange={onChange}
+            onRemove={onRemove}
           />
 
 
@@ -58,8 +63,9 @@ const AddExperience: React.FC<AddExperienceProps> = ({
               icon={<MdOutlineAddCircleOutline/>}
               text="Add Experience"
               variant="add"
+              onClick={createForm}
             />
-          </div>
+          </div>  
         </div>
     </div>
   )

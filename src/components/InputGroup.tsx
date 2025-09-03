@@ -1,5 +1,6 @@
 interface InputGroupProps {
   id: string;
+  name: string;
   placeholder: string;
   type?: string;
   maxLength?: number;
@@ -11,6 +12,7 @@ interface InputGroupProps {
 
 const InputGroup: React.FC<InputGroupProps> = ({
   id, 
+  name,
   placeholder,
   type = 'text',
   maxLength,
@@ -29,6 +31,7 @@ const InputGroup: React.FC<InputGroupProps> = ({
       {type === 'textarea' ? (
         <textarea
           id={id}
+          name={name}
           className="bg-[#F3F4F6] min-h-15 max-h-40 text-[13px] mb-1.5 rounded-lg outline-none focus:shadow-md focus:shadow-blue-200/100 focus:border-2 border-blue-500 py-2 px-2"
           placeholder={placeholder} 
           onChange={onChange}
@@ -37,6 +40,7 @@ const InputGroup: React.FC<InputGroupProps> = ({
       ) : (
           <input 
             id={id}
+            name={name}
             className="bg-[#F3F4F6] text-[13px] mb-1.5 rounded-lg outline-none focus:shadow-md focus:shadow-blue-200/100 focus:border-2 border-blue-500 py-2 px-2"
             type={type}
             placeholder={placeholder}
