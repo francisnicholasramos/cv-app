@@ -8,10 +8,10 @@ interface PersonalDetailsProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
-const PersonalDetails: React.FC<PersonalDetailsProps> = ({onChange, email, fullName, phone, github}) => {
+const GeneralInformation: React.FC<PersonalDetailsProps> = ({onChange, email, fullName, phone, github}) => {
   return (
     <form className="bg-white w-[500px] p-3 rounded-md">
-      <h1 className="font-bold text-xl mb-1.5">Personal Details</h1>
+      <h1 className="font-bold text-xl mb-1.5">General Information</h1>
       <InputGroup 
         id="full-name"
         name="fullName"
@@ -54,4 +54,4 @@ const PersonalDetails: React.FC<PersonalDetailsProps> = ({onChange, email, fullN
   )
 }
 
-export default PersonalDetails
+export default GeneralInformation;

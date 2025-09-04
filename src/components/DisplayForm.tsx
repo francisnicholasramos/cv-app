@@ -46,7 +46,7 @@ const DisplayForm: React.FC<DisplayFormProps> = ({
         ) : (
           <FormComponent 
             key={form.id}
-            form={form}
+            properties={form}
             onChange={onChange}
             cancel={onCancel}
             done={toggleCollapsed}

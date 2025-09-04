@@ -2,7 +2,7 @@ import InputGroup from "../InputGroup";
 import GroupButton from "../GroupButton";
 
 const EducationForm = (props) => {
-  const {id, degree, school, startDate, endDate} = props.form;
+  const {id, degree, school, startDate, endDate} = props.properties;
   const {onChange, cancel, done, remove} = props;
   return (
     <div id={id} data-array-name="educations" className="section-form bg-white p-2">

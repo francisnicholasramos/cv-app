@@ -10,7 +10,7 @@ type ExperienceFormData = {
 }
 
 export type ExperienceFormProps = {
-  form: ExperienceFormData;
+  properties: ExperienceFormData;
   cancel: () => void;
   done: () => void;
   remove: () => void;
@@ -19,7 +19,7 @@ export type ExperienceFormProps = {
 
 
 const ExperienceForm: React.FC<ExperienceFormProps> = (props) => {
-  const { id, company, position, location, description } = props.form;
+  const { id, company, position, location, description } = props.properties;
   const { onChange, cancel, done, remove } = props;
   return (
       <div id={id} data-array-name="experiences" className='section-form bg-white p-2'>

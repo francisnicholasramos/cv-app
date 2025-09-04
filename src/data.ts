@@ -42,7 +42,7 @@ export interface Data {
 
 const data: Data = {
   personalDetails: {
-    fullName: '',
+    fullName: 'Francis Nicholas Ramos',
     email: 'francis03@gmail.com',
     phone: "09195552208",
     github: 'https://github.com/user/'
@@ -54,7 +54,7 @@ const data: Data = {
         id: crypto.randomUUID(),
         degree: 'Bachelor of Science in Information Technology',
         school: 'Pateros Technological College',
-        location: 'Pateros',
+        location: 'Pateros, Metro Manila',
         startDate: 'Sept 2021',
         endDate: 'Aug 2025',
         isOpen: true,
@@ -66,7 +66,7 @@ const data: Data = {
     experiences: [
       {
         id: crypto.randomUUID(),
-        company: 'AIQUE Innovation Technology Corporation',
+        company: 'AIQUE Innovation Technology Co.',
         position: 'Intern Front-End Developer',
         startDate: 'Feb 2025',
         endDate: 'June 2025',
