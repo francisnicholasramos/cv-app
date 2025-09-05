@@ -1,7 +1,7 @@
 type GroupButtonProps = {
-    cancel: () => void;
-    done: () => void;
-    remove: () => void;
+    cancel: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    done: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    remove: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const GroupButton: React.FC<GroupButtonProps> = ({done, cancel, remove}) => {

@@ -1,7 +1,13 @@
 import SectionHeader from "../SectionHeader";
 import {Fragment} from "react";
+import type {Education} from "../../../src/data"
 
-const EducationSection = ({arraySection, arrayProperty}) => {
+type EducationSectionProps = {
+    arraySection: Education[];
+    arrayProperty: Education[];
+}
+
+const EducationSection: React.FC<EducationSectionProps> = ({arraySection, arrayProperty}) => {
     return (
         <div className="flex flex-col">
             <SectionHeader title="Education" arraySection={arraySection}/>

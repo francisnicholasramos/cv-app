@@ -1,4 +1,11 @@
-const SectionHeader = ({title, arraySection}) => {
+import type {Education, Experience} from "../../src/data"
+
+type SectionHeaderProps = {
+    title: string;
+    arraySection: Education[] | Experience[];
+}
+
+const SectionHeader: React.FC<SectionHeaderProps> = ({title, arraySection}) => {
     return (
         <div> 
             {arraySection && arraySection.length > 0 ? (

@@ -1,6 +1,5 @@
 import Accordion from "../Accordion"
 import DisplayForm from "../DisplayForm"
-import ExperienceForm from "./ExperienceForm"
 import Button from "../Button"
 import type {Experience} from "../../../src/data"
 import { BsBriefcaseFill } from "react-icons/bs"
@@ -48,7 +47,6 @@ const AddExperience: React.FC<AddExperienceProps> = ({
           <DisplayForm 
             forms={experiences}
             toggleCollapsed={toggleCollapsed}
-            FormComponent={ExperienceForm}
             titleKey="company"
             arrayName="experiences"
             onCancel={onCancel}

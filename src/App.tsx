@@ -4,10 +4,9 @@ import AddExperience from "./components/experience/AddExperience";
 import AddEducation from "./components/education/AddEducation";
 import View from "./components/View"
 import data from "../src/data"
-import type { Sections } from "../src/data"
-import type { Education, Experience } from "../src/data";
+import type { Sections, Education, Experience } from "../src/data"
 
-type SectionKey = keyof Sections;
+type SectionKey = keyof Sections; // educations | experience
 type ToggleKeys = "isCollapsed" | "isOpen";
 
 function App() {
@@ -126,12 +125,24 @@ function App() {
 
     }
 
-    function createForm(arrayName, object) {
-        setPrevState(null);
+    function createForm(
+        arrayName: SectionKey, 
+        object: Education | Experience,
+    ) {
         // Clone array to not push object to original
-        const section = structuredClone(sections[arrayName]);
-        section.push(object);
-        setSections({ ...sections, [arrayName]: section });
+        if (arrayName === "educations") {
+            const section: Education[] = structuredClone(sections[arrayName]);
+            section.push(object as Education);
+            setSections({ ...sections, [arrayName]: section });
+        } else if (arrayName === "experiences") {
+            const section: Experience[] = structuredClone(sections[arrayName]);
+            section.push(object as Experience);
+            setSections({ ...sections, [arrayName]: section });
+        }
+
+        // const section: Sections[K] = structuredClone(sections[arrayName]);
+        // section.push(object);
+        // setSections({ ...sections, [arrayName]: section });
     }
 
 
@@ -142,21 +153,21 @@ function App() {
             location: "",
             startDate: "",
             endDate: "",
+            isOpen: true,
             isCollapsed: false,
-            isHidden: false,
             id: crypto.randomUUID(),
         });
 
     const createExperienceForm = () =>
         createForm("experiences", {
-            companyName: "",
-            positionTitle: "",
+            company: "",
+            position: "",
             location: "",
             description: "",
             startDate: "",
             endDate: "",
+            isOpen: true,
             isCollapsed: false,
-            isHidden: false,
             id: crypto.randomUUID(),
         });
 

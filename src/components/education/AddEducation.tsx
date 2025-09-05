@@ -1,6 +1,5 @@
 import Accordion from "../Accordion"
 import DisplayForm from "../DisplayForm"
-import EducationForm from "./EducationForm"
 import Button from "../Button"
 import { FaGraduationCap } from "react-icons/fa6";
 import { MdOutlineAddCircleOutline } from "react-icons/md"
@@ -46,7 +45,6 @@ const AddEducation: React.FC<AddEducationProps> = ({
         <DisplayForm
           forms={educations}
           toggleCollapsed={toggleCollapsed}
-          FormComponent={EducationForm}
           titleKey="school"
           arrayName="educations"
           onCancel={onCancel}

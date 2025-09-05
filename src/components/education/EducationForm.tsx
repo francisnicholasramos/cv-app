@@ -2,7 +2,7 @@ import InputGroup from "../InputGroup";
 import GroupButton from "../GroupButton";
 import type {Education} from "../../../src/data"
 
-type EducationFormProps = {
+export type EducationFormProps = {
     properties: Education;
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, id: string) => void;
     cancel: (e: React.MouseEvent<HTMLButtonElement>) => void;
