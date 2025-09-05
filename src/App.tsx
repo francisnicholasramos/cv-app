@@ -4,17 +4,26 @@ import AddExperience from "./components/experience/AddExperience";
 import AddEducation from "./components/education/AddEducation";
 import View from "./components/View"
 import data from "../src/data"
+import type { Sections } from "../src/data"
+import type { Education, Experience } from "../src/data";
+
+type SectionKey = keyof Sections;
+type ToggleKeys = "isCollapsed" | "isOpen";
 
 function App() {
     const [loadData, setLoadData] = useState(data.personalDetails);
     const [sections, setSections] = useState(data.sections);
     const [sectionOpen, setSectionOpen] = useState<string | null>(null)
-    const [prevState, setPrevState] = useState<Record<string, boolean>>({});
+
+    const [prevState, setPrevState] = useState<Record<string, Education | Experience>>({});
 
     const setOpen = (sectionName: string) => setSectionOpen(sectionName);
 
-    function toggleValue(e, key) {
-        const sectionForm = e.target.closest(".section-form");
+    function toggleValue(e: React.MouseEvent<HTMLButtonElement>, key: ToggleKeys) {
+        const sectionForm = (e.target as HTMLElement).closest(".section-form") as HTMLElement & {
+            dataset: {arrayName: SectionKey};
+            id: string;
+        }
         const { id } = sectionForm;
         const { arrayName } = sectionForm.dataset;
 
@@ -22,7 +31,7 @@ function App() {
 
         setPrevState({
             ...prevState,
-            [id]: { ...section.find((form) => form.id === id) }, // save snapshot
+            [id]: { ...section.find((form) => form.id === id)! }, // save snapshot
         });
 
         setSections({
@@ -36,8 +45,10 @@ function App() {
         });
     }
 
-    function removeForm(e) {
-        const form = e.target.closest(".section-form");
+    function removeForm(e: React.MouseEvent<HTMLInputElement | HTMLButtonElement>) {
+        const form = (e.target as HTMLElement).closest(".section-form") as HTMLElement & {
+            dataset: {arrayName: SectionKey}
+        };
         const { arrayName } = form.dataset;
         const section = sections[arrayName];
         const { id } = form;
@@ -49,8 +60,10 @@ function App() {
     }
 
 
-    function cancelForm(e) {
-        const sectionForm = e.target.closest(".section-form");
+    function cancelForm(e: React.MouseEvent<HTMLButtonElement | HTMLInputElement>) {
+        const sectionForm = (e.target as HTMLElement).closest(".section-form") as HTMLElement & {
+            dataset: {arrayName: SectionKey}
+        };
         const { id } = sectionForm;
         const { arrayName } = sectionForm.dataset;
         const section = sections[arrayName];
@@ -125,7 +138,7 @@ function App() {
     const createEducationForm = () =>
         createForm("educations", {
             degree: "",
-            schoolName: "",
+            school: "",
             location: "",
             startDate: "",
             endDate: "",
@@ -150,7 +163,7 @@ function App() {
     const toggleCollapsed = (e: React.MouseEvent<HTMLButtonElement>) => toggleValue(e, "isCollapsed" );
 
     return (
-        <div className="flex justify-center gap-4"> 
+        <div className="flex justify-center gap-4 py-5"> 
             <div className="flex flex-col gap-4">
                 <GeneralInformation
                     fullName={loadData.fullName}
@@ -159,7 +172,16 @@ function App() {
                     github={loadData.github}
                     onChange={editable}
                 />
-
+                <AddExperience 
+                    setOpen={setOpen}
+                    isOpen={sectionOpen === "Experience"}
+                    experiences={sections.experiences}
+                    onCancel={cancelForm}
+                    toggleCollapsed={toggleCollapsed}
+                    createForm={createExperienceForm}
+                    onChange={editable}
+                    onRemove={removeForm}
+                />
                 <AddEducation 
                     setOpen={setOpen}
                     isOpen={sectionOpen === "Education"}
@@ -171,24 +193,11 @@ function App() {
                     onRemove={removeForm}
                 />
 
-                <AddExperience 
-                    setOpen={setOpen}
-                    isOpen={sectionOpen === "Experience"}
-                    experiences={sections.experiences}
-                    onCancel={cancelForm}
-                    toggleCollapsed={toggleCollapsed}
-                    createForm={createExperienceForm}
-                    onChange={editable}
-                    onRemove={removeForm}
-                />
-
-                <br/>
-
             </div>
 
-            <div className="w-[800px] max-w-[800px] bg-white">
+            <div className="w-[800px] max-w-[800px] h-screen max-h-[800px] bg-white">
                 <View
-                    genInfo={data.personalDetails}
+                    genInfo={loadData}
                     arraySection={sections}
                     arrayProperty={sections}
                 />

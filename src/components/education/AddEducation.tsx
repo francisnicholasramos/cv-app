@@ -4,8 +4,20 @@ import EducationForm from "./EducationForm"
 import Button from "../Button"
 import { FaGraduationCap } from "react-icons/fa6";
 import { MdOutlineAddCircleOutline } from "react-icons/md"
+import type { Education } from "../../../src/data"
 
-const AddEducation = ({
+type AddEducationProps = {
+    setOpen: (e: string) => void;
+    isOpen: boolean;
+    educations: Education[];
+    createForm: (e: React.MouseEvent) => void;
+    toggleCollapsed: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, id?: string) => void;
+    onRemove: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onCancel: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const AddEducation: React.FC<AddEducationProps> = ({
   setOpen,
   isOpen,
   educations,

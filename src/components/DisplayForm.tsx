@@ -13,8 +13,8 @@ interface DisplayFormProps {
   forms: FormData[];
   titleKey: string;
   arrayName: string;
-  onCancel: (e: React.MouseEventHandler) => void;
-  onRemove: (e: React.MouseEventHandler) => void;
+  onCancel: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onRemove: (e: React.MouseEvent<HTMLButtonElement>) => void;
   toggleCollapsed: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;  
   FormComponent: ExperienceFormProps 

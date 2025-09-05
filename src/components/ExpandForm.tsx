@@ -1,10 +1,7 @@
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-
 interface Props {
   title: string;
   arrayName: string;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  isVisible: boolean;
   form: Form;
 }
 
@@ -16,7 +13,6 @@ const ExpandForm: React.FC<Props> = ({
   title,
   arrayName,
   onClick,
-  isVisible,
   form
 }) => {
   
@@ -32,7 +28,6 @@ const ExpandForm: React.FC<Props> = ({
       >
         <span className="flex items-center justify-between cursor-pointer">
           {title} 
-          { isVisible ? <AiOutlineEye/> : <AiOutlineEyeInvisible/> }
         </span>
       </button>
     </div>

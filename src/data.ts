@@ -13,7 +13,6 @@ export interface Education {
   startDate: string;
   endDate: string;
   isOpen: boolean;
-  isHidden: boolean,
   isCollapsed: boolean;
 }
 
@@ -26,7 +25,6 @@ export interface Experience {
   location: string;
   description: string;
   isOpen: boolean;
-  isHidden: boolean,
   isCollapsed: boolean;
 }
 
@@ -58,7 +56,6 @@ const data: Data = {
         startDate: 'Sept 2021',
         endDate: 'Aug 2025',
         isOpen: true,
-        isHidden: true,
         isCollapsed: true
       }
     ],
@@ -71,9 +68,8 @@ const data: Data = {
         startDate: 'Feb 2025',
         endDate: 'June 2025',
         location: 'One World Place, BGC Taguig City',
-        description: "Assist in developing web applications using React/NextJs and other popular frontend technologies and collaborating with the design team to translate UI/UX wireframes into functional components",
+        description: "Assist in developing web applications using React/Next.js and other popular frontend technologies, and collaborate with the design team to translate UI/UX wireframes into functional components.",
         isOpen: true,
-        isHidden: false,
         isCollapsed: true
       },
       {
@@ -83,9 +79,8 @@ const data: Data = {
         startDate: 'Aug 2025',
         endDate: 'Dec 2025',
         location: '9th Avenue, corner 38th St, Taguig, Metro Manila',
-        description: "test",
+        description: "Build internal services to support business operations and improve development efficiency.",
         isOpen: true,
-        isHidden: false,
         isCollapsed: true
       },
       {
@@ -96,8 +91,7 @@ const data: Data = {
         endDate: 'June 2026',
         location: '28th St., Bonifacio High Street Central, Taguig City',
         isOpen: true,
-        description: "manifest na muna",
-        isHidden: false,
+        description: "manifesting",
         isCollapsed: true
       }
     ]

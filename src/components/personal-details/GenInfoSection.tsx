@@ -1,15 +1,26 @@
-const GenInfoSection = ({property}) => {
-    const {fullName, email, phone, github} = property
+import type {PersonalDetails} from "../../../src/data";
+
+type GenInfoSectionProps = {
+    property: PersonalDetails;
+}
+
+const GenInfoSection: React.FC<GenInfoSectionProps> = (props) => {
+    const {fullName, email, phone, github} = props.property
     const arr = [email, phone, github]
     return (
         <div className="flex flex-col items-center">
             <div className="font-bold uppercase text-xl">{fullName}</div>
             <div className="">
-                {arr.map((prop, i) => i !== arr.length - 1 ? (
-                    <span key={prop.id}>{prop} | </span>
-                ) : (
-                        <span key={prop.id}>{prop}</span>
-                    ))}
+                {arr
+                    .filter((prop) => prop !== "")
+                    .map((prop, i, filtered) => i !== arr.length - 1 ? (
+                        <span key={i}>
+                            {prop} 
+                            {i !== filtered.length - 1 && " | "}
+                        </span>
+                    ) : (
+                            <span key={i}>{prop}</span>
+                ))}
             </div>
         </div>
     )

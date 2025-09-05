@@ -8,13 +8,13 @@ import { MdOutlineAddCircleOutline } from "react-icons/md"
 
 interface AddExperienceProps {
   isOpen: boolean;
-  createForm: (e: React.MouseEventHandler) => void;
+  createForm: (e: React.MouseEvent) => void;
   setOpen: (sectionName: string) => void;
-  experiences: Experience;
+  experiences: Experience[];
   toggleCollapsed: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  onCancel: (e: React.MouseEventHandler) => void;
-  onRemove: (e: React.MouseEventHandler) => void;
+  onCancel: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onRemove: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const AddExperience: React.FC<AddExperienceProps> = ({

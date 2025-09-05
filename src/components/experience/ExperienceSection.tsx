@@ -1,7 +1,13 @@
 import SectionHeader from "../SectionHeader";
 import {Fragment} from "react";
+import type {Experience} from "../../../src/data";
 
-const ExperienceSection = ({arraySection, arrayProperty}) => {
+type ExperienceSectionProps = {
+    arraySection: Experience[];
+    arrayProperty: Experience[];
+}
+
+const ExperienceSection: React.FC<ExperienceSectionProps> = ({arraySection, arrayProperty}) => {
     return (
         <div className="flex flex-col">
             <SectionHeader title="Experience" arraySection={arraySection}/>

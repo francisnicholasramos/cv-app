@@ -4,7 +4,7 @@ import EducationSection from "./education/EducationSection";
 
 const View = ({genInfo, arrayProperty, arraySection}) => {
     return (
-        <div className="flex flex-col font-serif text-[#454545] p-6">
+        <div className="flex flex-col font-serif text-[#454545] p-6 max-w-[794px] max-h-[1123px]">
             <GenInfoSection 
                 property={genInfo}
             />
