@@ -10,7 +10,7 @@ interface PersonalDetailsProps {
 
 const GeneralInformation: React.FC<PersonalDetailsProps> = ({onChange, email, fullName, phone, github}) => {
   return (
-    <form className="bg-white w-[500px] p-3 rounded-md">
+    <form className="bg-white p-3 rounded-md">
       <h1 className="font-bold text-xl mb-1.5">General Information</h1>
       <InputGroup 
         id="full-name"

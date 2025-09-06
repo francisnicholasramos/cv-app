@@ -24,7 +24,6 @@ const AddExperience: React.FC<AddExperienceProps> = ({
   onChange,
   onCancel,
   toggleCollapsed,
-  // onHide,
   onRemove
 }) => {
 

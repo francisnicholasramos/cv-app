@@ -44,7 +44,7 @@ const EducationForm: React.FC<EducationFormProps> = (props) => {
                     onChange={(e) => onChange(e, id)}
                     value={startDate}
                     id="start"
-                    name="start"
+                    name="startDate"
                     label="Start date"
                     placeholder="Sept 2021"
                 />
@@ -52,7 +52,7 @@ const EducationForm: React.FC<EducationFormProps> = (props) => {
                     onChange={(e) => onChange(e, id)}
                     value={endDate}
                     id="end"
-                    name="end"
+                    name="endDate"
                     label="End date"
                     placeholder="Aug 2025"
                 />

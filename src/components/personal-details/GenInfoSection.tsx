@@ -13,6 +13,7 @@ const GenInfoSection: React.FC<GenInfoSectionProps> = (props) => {
             <div className="">
                 {arr
                     .filter((prop) => prop !== "")
+                    .map((prop) => prop.replace("https://", ""))
                     .map((prop, i, filtered) => i !== arr.length - 1 ? (
                         <span key={i}>
                             {prop} 

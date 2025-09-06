@@ -140,9 +140,6 @@ function App() {
             setSections({ ...sections, [arrayName]: section });
         }
 
-        // const section: Sections[K] = structuredClone(sections[arrayName]);
-        // section.push(object);
-        // setSections({ ...sections, [arrayName]: section });
     }
 
 
@@ -174,8 +171,8 @@ function App() {
     const toggleCollapsed = (e: React.MouseEvent<HTMLButtonElement>) => toggleValue(e, "isCollapsed" );
 
     return (
-        <div className="flex justify-center gap-4 py-5"> 
-            <div className="flex flex-col gap-4">
+        <div className="flex flex-col lg:flex-row justify-center gap-4 p-5"> 
+            <div className="flex flex-col gap-4 min-w-[375px] w-full  lg:w-[600px]">
                 <GeneralInformation
                     fullName={loadData.fullName}
                     email={loadData.email}
@@ -206,7 +203,7 @@ function App() {
 
             </div>
 
-            <div className="w-[800px] max-w-[800px] h-screen max-h-[800px] bg-white">
+            <div className="lg:w-full min-w-[375px] xl:w-[800px] h-screen bg-white">
                 <View
                     genInfo={loadData}
                     arraySection={sections}

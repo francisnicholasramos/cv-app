@@ -43,8 +43,6 @@ const DisplayForm: React.FC<DisplayFormProps> = ({
     onRemove,
     toggleCollapsed,
 
-    // FormComponent
-
 }) => {
     return (
         <div> 
@@ -61,12 +59,11 @@ const DisplayForm: React.FC<DisplayFormProps> = ({
                     );
                 }
 
-                // Type narrowing
                 if ("degree" in form && "school" in form) {
                     return (
                         <EducationForm
                             key={form.id}
-                            properties={form} // TypeScript knows this is Education
+                            properties={form} 
                             onChange={onChange}
                             cancel={onCancel}
                             done={toggleCollapsed}
@@ -79,7 +76,7 @@ const DisplayForm: React.FC<DisplayFormProps> = ({
                     return (
                         <ExperienceForm
                             key={form.id}
-                            properties={form} // TypeScript knows this is Experience
+                            properties={form} 
                             onChange={onChange}
                             cancel={onCancel}
                             done={toggleCollapsed}
