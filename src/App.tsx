@@ -172,7 +172,7 @@ function App() {
 
     return (
         <div className="flex flex-col lg:flex-row justify-center gap-4 p-5"> 
-            <div className="flex flex-col gap-4 min-w-[375px] w-full  lg:w-[600px]">
+            <div className="flex flex-col gap-4 w-full lg:w-[600px] max-w-full">
                 <GeneralInformation
                     fullName={loadData.fullName}
                     email={loadData.email}
@@ -203,7 +203,7 @@ function App() {
 
             </div>
 
-            <div className="lg:w-full min-w-[375px] xl:w-[800px] h-screen bg-white">
+            <div className="w-full lg:w-auto xl:w-[800px] h-screen bg-white max-w-full">
                 <View
                     genInfo={loadData}
                     arraySection={sections}
